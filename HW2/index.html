@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal website for HTML & CSS class">
+    <title>CIS-128 Evan</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>CIS-128-OLH-Mobile Web App Development</h1>
+    </header>
+    <button id="animate-btn">Start Animation</button> 
+    <main>
+        <article class="profile">
+            <img src="Evan.jpg" alt="Evan standing in front of a code-themed background, representing a young programmer." class="profile-pic">
+            <p>Hi, my name is Evan. I'm a junior from Hillsdale Highschool. I've been programming for almost three years now. I have coding experience in C, Java, Python, and HTML&CSS. I'm have been on back-end for most of the time and I figured that front-end is just as important. This course is the first front-end class I've taken, and I'm really excited to learn more about it.</p>
+            
+        </article>
+        
+        <section class="technologies">
+            <p>For the past two years, I've been forcusing on the back-end part of coding and is now working on data structure and algorithms. During last winter, I tried building an app and realized that I lack front-end skills. Therefore, I'm now here taking my first front-end course.</p>
+            <br>
+            <h2>Technologies for this Class</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+        </section>
+        <br>
+        <section class="resources">
+            <h2>Resources</h2>
+            <ul>
+                <li><a href="https://www.w3schools.com/html/default.asp" target="_blank" rel="noopener noreferrer">W3Schools</a> - Provides an in-depth introduction to HTML, CSS, and JS functions.</li>
+                <li><a href="https://stackoverflow.com/" target="_blank" rel="noopener noreferrer">Stack Overflow</a> - A Q&A forum that allows you to ask and answer any questions/issues regarding programming.</li>
+            </ul>
+        </section>
+    </main>
+    <script>
+        $(document).ready(function() {
+            $('#animate-btn').click(function() {
+                $('header h1').animate({ fontSize: '38px' }, "slow").css('color', 'green');
+                setTimeout(function() {
+                    $('header h1').animate({ fontSize: '32px' }, "slow").css('color', '#fff'); 
+                }, 1000); 
+                $('.profile-pic').css('border', '5px solid #333');
+            });
+        });
+    </script>
+</body>
+</html>
