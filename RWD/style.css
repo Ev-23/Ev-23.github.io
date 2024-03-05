@@ -1,0 +1,137 @@
+body, h1, h2, h3, p, img, ul, li {
+    border: 0; margin: 0; padding: 0;
+}
+
+body {
+    background: #eaf8fb;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+p {
+    letter-spacing: .04em;
+    line-height: 21px;
+}
+
+div#header {
+    background-color: #333;
+    background-image: url('headerbkgd.png');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    color: #fff;
+    -webkit-border-bottom-right-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    margin: 0 auto;
+    min-height: 130px;
+    padding: 45px 15px 15px;
+    width: 870px;
+}
+
+ul.navigation {
+    list-style: none;
+    margin-top: 20px;
+}
+
+ul.navigation li {
+    display: inline-block;
+    margin: 0 3px 5px;
+}
+
+ul.navigation li a {
+    background: #4a4a4a;
+    color: #fff;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #595959;
+    padding: 3px 10px;
+    text-decoration: none;
+}
+
+ul.navigation li a:hover {
+    background-color: #000;
+}
+
+div.content {
+    margin: 15px auto;
+    width: 900px;
+}
+
+div.col-right, div.sidebar-left {
+    width: auto;
+    float: none;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+div.col-right {
+    float: right;
+    width: 660px;
+}
+
+div.sidebar-left {
+    float: left;
+    padding: 0 10px;
+    width: 200px;
+}
+
+div.sidebar-left a {
+    color: #445e64;
+}
+
+div.sidebar-left a:hover {
+    text-decoration: none;
+}
+
+.list, .list li a {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+div#footer {
+    background-color: #c4d5d9;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
+    width: 900px;
+}
+
+.float-left {
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+.clear {
+    clear: both;
+}
+
+/* Adjustments */
+@media (max-width: 768px) {
+    body, h1, h2, h3, p {
+        font-size: 16px; 
+    }
+
+    ul.navigation li {
+        display: block;
+        width: 100%;
+    }
+
+    ul.navigation li a {
+        padding: 10px; 
+    }
+
+    img {
+        max-width: 100%; 
+        height: auto; 
+    }
+
+    div#header, div.content, div#footer {
+        width: auto; 
+        padding: 20px; 
+    }
+}
