@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My PWA Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <header>
+        <h1>Understanding Progressive Web Applications (PWA)</h1>
+    </header>
+
+    <main>
+        <p>Progressive Web Applications (PWAs) are a type of mobile app delivered through the web, built using common web technologies including HTML, CSS, and JavaScript. They are intended to work on any platform that uses a standards-compliant browser.</p>
+        
+        <p>Some of the main features of PWAs include the ability to work offline, receive push notifications, and access the device's hardware, which allows for performance similar to native applications. By leveraging service workers, manifest files, and other modern web capabilities, PWAs provide a user experience that rivals that of native apps.</p>
+        
+        <label for="background-selector">Choose a background:</label>
+        <select id="background-selector" name="background">
+            <option value="">Select background</option>
+            <option value="lightblue">Light Blue</option>
+            <option value="lightgold">Light Gold</option>
+        </select>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var selector = document.getElementById('background-selector');
+            selector.addEventListener('change', function() {
+                var selectedValue = this.value;
+                if (selectedValue === 'lightblue') {
+                    document.body.style.backgroundImage = "url('lightblue.jpg')";
+                } else if (selectedValue === 'lightgold') {
+                    document.body.style.backgroundImage = "url('lightgold.jpg')";
+                }
+            });
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>
