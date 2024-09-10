@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Part 2 - Basic Calculations for Homework 2">
+    <title>Homework 2 - Part 2</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function processNumbers() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            const num3 = parseFloat(document.getElementById("num3").value);
+            
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                document.getElementById("result").innerText = "Error: Please enter valid numbers.";
+                return;
+            }
+
+            const sum = num1 + num2 + num3;
+            const avg = sum / 3;
+            const product = num1 * num2 * num3;
+            const smallest = Math.min(num1, num2, num3);
+            const largest = Math.max(num1, num2, num3);
+
+            document.getElementById("result").innerText = 
+                `Sum: ${sum}\n
+                Average: ${avg}\n
+                Product: ${product}\n
+                Smallest: ${smallest}\n
+                Largest: ${largest}`;
+        }
+
+        function clearForm() {
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("num3").value = "";
+            document.getElementById("result").innerText = "";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Homework 2 - Part 2: Basic Calculations</h1>
+    </header>
+
+    <section>
+        <form>
+            <input type="text" id="num1" placeholder="Enter first integer">
+            <input type="text" id="num2" placeholder="Enter second integer">
+            <input type="text" id="num3" placeholder="Enter third integer"><br>
+            <button type="button" onclick="processNumbers()">Process</button>
+            <button type="button" onclick="clearForm()">Clear</button>
+        </form>
+        <textarea id="result" rows="6" readonly></textarea>
+        <p><a href="hw2.html" class="button-link">Back to Homework 2 Main Page</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 JavaScript/Ajax Course at CSM</p>
+    </footer>
+</body>
+</html>
