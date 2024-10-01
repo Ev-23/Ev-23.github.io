@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Extra Credit - Multiplication Quiz for Homework 3">
+    <title>Homework 3 - Extra Credit:Multiplication Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        let num1 = Math.floor(Math.random() * 10);
+        let num2 = Math.floor(Math.random() * 10);
+
+        function askQuestion() {
+            document.getElementById("question").innerText = `How much is ${num1} times ${num2}?`;
+        }
+
+        function checkAnswer() {
+            const answer = parseInt(document.getElementById("answer").value);
+            const correctAnswer = num1 * num2;
+
+            if (answer === correctAnswer) {
+                document.getElementById("result").innerText = "Very good!";
+                num1 = Math.floor(Math.random() * 10);
+                num2 = Math.floor(Math.random() * 10);
+                askQuestion();
+            } else {
+                document.getElementById("result").innerText = "No. Please try again.";
+            }
+        }
+    </script>
+</head>
+<body onload="askQuestion()">
+    <header>
+        <h1>Homework 3 - Extra Credit :Multiplication Quiz</h1>
+    </header>
+
+    <section>
+        <p id="question"></p>
+        <input type="text" id="answer" placeholder="Type your answer here">
+        <button type="button" onclick="checkAnswer()">Submit</button>
+        <textarea id="result" rows="3" readonly></textarea>
+        <p><a href="hw3.html">Back to Homework 3 Main Page</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 JavaScript/Ajax Course at CSM</p>
+    </footer>
+</body>
+</html>

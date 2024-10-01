@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Part 1 - Student Grades for Homework 3">
+    <title>Homework 3 - Pt 1: Student Grades</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function calculateGrade() {
+            const hwAvg = parseInt(document.getElementById("hwAvg").value);
+            const midExam = parseInt(document.getElementById("midExam").value);
+            const finalExam = parseInt(document.getElementById("finalExam").value);
+            const participation = parseInt(document.getElementById("participation").value);
+
+            if (isNaN(hwAvg) || isNaN(midExam) || isNaN(finalExam) || isNaN(participation) || 
+                hwAvg < 0 || hwAvg > 100 || midExam < 0 || midExam > 100 || 
+                finalExam < 0 || finalExam > 100 || participation < 0 || participation > 100) {
+                document.getElementById("result").innerText = "Error: Please enter valid grades (0-100).";
+                return;
+            }
+
+            const finalAvg = Math.round((0.5 * hwAvg) + (0.2 * midExam) + (0.2 * finalExam) + (0.1 * participation));
+            let letterGrade = "";
+
+            if (finalAvg >= 90) letterGrade = "A";
+            else if (finalAvg >= 80) letterGrade = "B";
+            else if (finalAvg >= 70) letterGrade = "C";
+            else if (finalAvg >= 60) letterGrade = "D";
+            else letterGrade = "F";
+
+            document.getElementById("result").innerText = `Final Average: ${finalAvg}\nLetter Grade: ${letterGrade}`;
+            if (letterGrade === "D" || letterGrade === "F") {
+                document.getElementById("result").innerText += "\nStudent must retake the course.";
+            }
+        }
+
+        function clearForm() {
+            document.getElementById("hwAvg").value = "";
+            document.getElementById("midExam").value = "";
+            document.getElementById("finalExam").value = "";
+            document.getElementById("participation").value = "";
+            document.getElementById("result").innerText = "";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Homework 3 - Part 1: Student Grades</h1>
+    </header>
+
+    <section>
+        <form>
+            <label for="hwAvg">Homework Average:</label><br>
+            <input type="number" id="hwAvg" placeholder="Enter Homework Average (0-100)"><br>
+            <label for="midExam">Mid-Term Exam:</label><br>
+            <input type="number" id="midExam" placeholder="Enter Mid-Term Exam Score (0-100)"><br>
+            <label for="finalExam">Final Exam:</label><br>
+            <input type="number" id="finalExam" placeholder="Enter Final Exam Score (0-100)"><br>
+            <label for="participation">Participation:</label><br>
+            <input type="number" id="participation" placeholder="Enter Participation Score (0-100)"><br><br>
+            <button type="button" onclick="calculateGrade()">Submit</button>
+            <button type="button" onclick="clearForm()">Clear</button>
+        </form>
+        <textarea id="result" rows="5" readonly></textarea>
+        <p><a href="hw3.html">Back to Homework 3 Main page</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 JavaScript/Ajax Course at CSM</p>
+    </footer>
+</body>
+</html>

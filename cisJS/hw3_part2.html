@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Part 2 - Sales Commission for Homework 3">
+    <title>Homework 3 - Pt 2: Sales Commission</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function calculateEarnings() {
+            const item1 = parseFloat(document.getElementById("item1").value);
+            const item2 = parseFloat(document.getElementById("item2").value);
+            const item3 = parseFloat(document.getElementById("item3").value);
+            const item4 = parseFloat(document.getElementById("item4").value);
+
+            if (isNaN(item1) || isNaN(item2) || isNaN(item3) || isNaN(item4) || 
+                item1 < 0 || item2 < 0 || item3 < 0 || item4 < 0) {
+                document.getElementById("result").innerText = "Error: Please enter valid quantities.";
+                return;
+            }
+
+            const totalSales = (item1 * 20.99) + (item2 * 12.75) + (item3 * 9.95) + (item4 * 35.89);
+            const commission = totalSales * 0.09;
+            const totalEarnings = (250 + commission).toFixed(2);
+
+            document.getElementById("result").innerText = `Total Sales: $${totalSales.toFixed(2)}\nTotal Earnings: $${totalEarnings}`;
+        }
+
+        function clearForm() {
+            document.getElementById("item1").value = "";
+            document.getElementById("item2").value = "";
+            document.getElementById("item3").value = "";
+            document.getElementById("item4").value = "";
+            document.getElementById("result").innerText = "";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Homework 3 - Part 2: Sales Commission</h1>
+    </header>
+
+    <section>
+        <form>
+            <label for="item1">Item 1:</label><br>
+            <input type="number" id="item1" placeholder="Quantity of Item 1 sold"><br>
+            <label for="item2">Item 2:</label><br>
+            <input type="number" id="item2" placeholder="Quantity of Item 2 sold"><br>
+            <label for="item3">Item 3:</label><br>
+            <input type="number" id="item3" placeholder="Quantity of Item 3 sold"><br>
+            <label for="item4">Item 4:</label><br>
+            <input type="number" id="item4" placeholder="Quantity of Item 4 sold"><br><br>
+            <button type="button" onclick="calculateEarnings()">Calculate</button>
+            <button type="button" onclick="clearForm()">Clear</button>
+        </form>
+        <textarea id="result" rows="5" readonly></textarea>
+        <p><a href="hw3.html">Back to Homework 3 Main Page</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 JavaScript/Ajax Course in CSM</p>
+    </footer>
+</body>
+</html>
