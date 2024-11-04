@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Homework 4 - Part 2: Compound Interest">
+    <title>Homework 4 - Pt 2: Compound Interest</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function calculateCompoundInterest(principal, rate) {
+            let tableHTML = `<table border="1">
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Amount on Deposit</th>
+                                    <th>Interest Rate</th>
+                                </tr>`;
+
+            for (let year = 1; year <= 5; year++) {
+                let amount = (principal * Math.pow(1 + rate, year)).toFixed(2);
+                tableHTML += `<tr>
+                                <td>${year}</td>
+                                <td>${parseFloat(amount).toLocaleString()}</td>
+                                <td>${rate.toFixed(2)}</td>
+                              </tr>`;
+            }
+
+            tableHTML += '</table>';
+            return tableHTML;
+        }
+
+        function displayTables() {
+            let output = '';
+            const principal = 1000;
+
+            const rates = [0.05, 0.06, 0.07];  // intr. rt 5% 6% 7%
+            for (let rate of rates) {
+                output += `<h3>Interest Rate: ${(rate * 100).toFixed(2)}%</h3>`;
+                output += calculateCompoundInterest(principal, rate);
+            }
+
+            document.getElementById("tables").innerHTML = output;
+        }
+    </script>
+</head>
+<body onload="displayTables()">
+    <header>
+        <h1>Learn About Compound Interest</h1>
+    </header>
+
+    <section id="tables">
+        
+    </section>
+
+    <p><a href="hw4.html">Back to Homework 4 Main Page</a></p>
+
+    <footer>
+        <p>&copy; 2024 JavaScript/Ajax Course in CSM</p>
+    </footer>
+</body>
+</html>
