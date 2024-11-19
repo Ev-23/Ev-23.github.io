@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Homework 5 - Part 2: URL Navigation">
+    <title>Homework 5 - Part 2: URL Navigation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function navigateOnChange() {
+            const select = document.getElementById("urlMenu1");
+            const selectedUrl = select.value;
+            if (selectedUrl) {
+                window.open(selectedUrl, "_blank");
+            }
+        }
+
+        function navigateOnClick() {
+            const select = document.getElementById("urlMenu2");
+            const selectedUrl = select.value;
+            if (selectedUrl) {
+                window.open(selectedUrl, "_blank");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Homework 5 - Part 2: URL Navigation</h1>
+    </header>
+
+    <section>
+        <h2>Navigate on Change</h2>
+        <p>Select a website from the list below, and it will open in a new tab.</p>
+        <select id="urlMenu1" onchange="navigateOnChange()">
+            <option value="">Select a website</option>
+            <option value="https://www.google.com">Google</option>
+            <option value="https://www.wikipedia.org">Wikipedia</option>
+            <option value="https://www.github.com">GitHub</option>
+        </select>
+    </section>
+
+    <section>
+        <h2>Navigate on Button Click</h2>
+        <p>Select a website and click "Go" to open it in a new tab.</p>
+        <select id="urlMenu2">
+            <option value="">Select a website</option>
+            <option value="https://www.reddit.com">Reddit</option>
+            <option value="https://www.bbc.com">BBC</option>
+            <option value="https://www.stackoverflow.com">Stack Overflow</option>
+        </select>
+        <button type="button" onclick="navigateOnClick()">Go</button>
+    </section>
+
+    <p><a href="hw5.html">Back to Homework 5 Main Page</a></p>
+
+    <footer>
+        <p>&copy; 2024 JavaScript/Ajax Course at CSM</p>
+    </footer>
+</body>
+</html>
