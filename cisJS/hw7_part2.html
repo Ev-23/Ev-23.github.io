@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Homework 7 - Part 2: Cookies for User Info">
+    <title>Homework 7 - Part 2: Cookies</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function setCookie(name, value) {
+            document.cookie = `${name}=${value}; path=/; SameSite=Lax`;
+        }
+        function getCookie(name) {
+            const cookies = document.cookie.split("; ");
+            for (let cookie of cookies) {
+                const [key, value] = cookie.split("=");
+                if (key === name) return value;
+            }
+            return null;
+        }
+
+        function handlePageLoad() {
+            const nameCookie = getCookie("name");
+            const usernameCookie = getCookie("username");
+
+            const formArea = document.getElementById("formArea");
+            const welcomeArea = document.getElementById("welcomeArea");
+
+            if (nameCookie && usernameCookie) {
+                formArea.style.display = "none";
+                welcomeArea.innerHTML = `<p>Welcome back, ${nameCookie} (${usernameCookie})!</p>`;
+            } else {
+                formArea.style.display = "block";
+                welcomeArea.textContent = "";
+            }
+        }
+
+        function saveUserInfo() {
+            const name = document.getElementById("nameInput").value.trim();
+            const username = document.getElementById("usernameInput").value.trim();
+
+            if (!name || !username) {
+                document.getElementById("formError").textContent = "Both fields are required!";
+                return;
+            }
+
+            setCookie("name", name);
+            setCookie("username", username);
+            handlePageLoad();
+        }
+    </script>
+</head>
+<body onload="handlePageLoad()">
+    <header>
+        <h1>Homework 7 - Part 2: Cookies for User Info</h1>
+    </header>
+
+    <section>
+        <div id="welcomeArea"></div>
+        <div id="formArea" style="display: none;">
+            <form>
+                <label for="nameInput">Enter your name:</label><br>
+                <input type="text" id="nameInput"><br><br>
+
+                <label for="usernameInput">Enter your username:</label><br>
+                <input type="text" id="usernameInput"><br><br>
+
+                <button type="button" onclick="saveUserInfo()">Submit</button>
+            </form>
+            <p id="formError" style="color: red;"></p>
+        </div>
+
+        <p><a href="hw7.html">Back to Homework 7 Main Page</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 JavaScript/Ajax Course at CSM</p>
+    </footer>
+</body>
+</html>

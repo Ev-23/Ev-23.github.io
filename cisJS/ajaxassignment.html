@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+<body>
+  <h1>Homework 8 - AJAX Application</h1>
+  <a href="index.html">Back to Main Course Page</a>
+<button type="button" onclick="loadDoc()">Get CD collection</button>
+<br><br>
+<table id="demo"></table>
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    myFunction(this);
+  }
+  xhttp.open("GET", "cd_catalog.xml");
+  xhttp.send();
+}
+function myFunction(xml) {
+  const xmlDoc = xml.responseXML;
+  const x = xmlDoc.getElementsByTagName("CD");
+  let table="<tr><th>Artist</th><th>Title</th></tr>";
+  for (let i = 0; i <x.length; i++) { 
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+<h2>Explanation of AJAX</h2>
+<p>
+  Ajax call retrives the CD data from cd_catlog xml file. When button clicked, JS script creates an XMLHttpRequest, sending a request to server and processes the response. If response sucessful status == 200, the method "displayCDs()" will be triggered, parsing the XML and display the CD data in table form. 
+</p>
+<h2>REST API - OpenWeather</h2>
+<p>
+  The OpenWeather API gives weather data for cities around the world. Its responses is in JSON format, making it easy to parse using JS.
+  Developers can retrieve real-time weather, forecasts, & historical data.
+</p>
+<p>
+  <strong>Access Requirements:</strong> The API requires a free API key for limited access; premium plans are available for extended features.
+</p>
+<p>
+  <strong>Pricing:</strong> OpenWeather offers both free and paid tiers, with costs depending on the number of API requests made per month.
+</p>
+<p>
+  <a href="https://openweathermap.org/api" target="_blank" rel="noopener noreferrer">OpenWeather API Documentation</a>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Extra Credit - Multiplication Quiz for Homework 3">
+    <title>Homework 3 - Extra Credit: Multiplication Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        let num1 = Math.floor(Math.random() * 10);
+        let num2 = Math.floor(Math.random() * 10);
+        let correctAnswer = num1 * num2;
+
+        function askQuestion() {
+            document.getElementById("question").innerText = `How much is ${num1} times ${num2}?`;
+        }
+
+        function checkAnswer() {
+            const answer = parseInt(document.getElementById("answer").value);
+
+            if (answer === correctAnswer) {
+                document.getElementById("result").innerText = "Very good!";
+                document.getElementById("continueButtons").style.display = "block";  
+            } else {
+                document.getElementById("result").innerText = "No. Try again.";
+            }
+        }
+
+        function continueGame() {
+            num1 = Math.floor(Math.random() * 10);
+            num2 = Math.floor(Math.random() * 10);
+            correctAnswer = num1 * num2;
+            document.getElementById("answer").value = "";  
+            askQuestion();  
+            document.getElementById("result").innerText = "";  
+            document.getElementById("continueButtons").style.display = "none";  
+        }
+
+        function endGame() {
+            document.getElementById("result").innerText = "Thanks for playing, see you next time!";
+            document.getElementById("question").innerText = "";  
+            document.getElementById("continueButtons").style.display = "none";  
+            document.getElementById("answer").style.display = "none"; 
+            document.getElementById("submitBtn").style.display = "none";  
+        }
+
+        window.onload = askQuestion;  
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Homework 3 - Extra Credit: Multiplication Quiz</h1>
+    </header>
+
+    <section>
+        <p id="question"></p>
+        <input type="number" id="answer" placeholder="Type your answer here">
+        <button id="submitBtn" type="button" onclick="checkAnswer()">Submit</button>
+
+        <!-- show game result  -->
+        <textarea id="result" rows="3" readonly></textarea>
+
+        <div id="continueButtons" style="display: none;">
+            <p>Would you like to continue?</p>
+            <button type="button" onclick="continueGame()">YES</button>
+            <button type="button" onclick="endGame()">NO</button>
+        </div>
+
+        <p><a href="hw3.html">Back to Homework 3 Main Page</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 JavaScript/Ajax Course at CSM</p>
+    </footer>
+</body>
+</html>
